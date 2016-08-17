@@ -89,19 +89,19 @@ module Brakeman
     end
 
     def controller_paths
-      @controller_paths ||= find_paths("app/**/controllers")
+      @controller_paths ||= find_paths("apps/**/controllers")
     end
 
     def model_paths
-      @model_paths ||= find_paths("app/**/models")
+      @model_paths ||= find_paths("apps/**/models")
     end
 
     def template_paths
-      @template_paths ||= find_paths("app/**/views", "*.{#{VIEW_EXTENSIONS}}")
+      @template_paths ||= find_paths("apps/**/views", "*.{#{VIEW_EXTENSIONS}}")
     end
 
     def layout_exists?(name)
-      pattern = "#{@root}/{engines/*/,}app/views/layouts/#{name}.html.{erb,haml,slim}"
+      pattern = "#{@root}/{engines/*/,}apps/views/layouts/#{name}.html.{erb,haml,slim}"
       !Dir.glob(pattern).empty?
     end
 
@@ -114,7 +114,7 @@ module Brakeman
   private
 
     def find_helper_paths
-      find_paths "app/helpers"
+      find_paths "apps/**/helpers"
     end
 
     def find_additional_lib_paths
